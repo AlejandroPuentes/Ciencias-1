@@ -17,6 +17,8 @@ public class Strassen {
 
 
     public static void main(String []args ){
+        InterStrassen Stra = new InterStrassen();
+        Stra.show();
         int n,m,i,j,tam;
         int [][] A;
         int [][]B;
