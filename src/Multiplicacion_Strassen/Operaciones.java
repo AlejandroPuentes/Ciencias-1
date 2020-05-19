@@ -11,8 +11,7 @@ package Multiplicacion_Strassen;
  */
 public class Operaciones {
     
-    public int[][] multiply(int[][] A, int[][] B)
-    {        
+    public int[][] multiply(int[][] A, int[][] B){        
         int n = A.length;
         int[][] R = new int[n][n];
         /* caso base*/
@@ -111,7 +110,8 @@ public class Operaciones {
         for(int i1 = 0, i2 = iB; i1 < C.length; i1++, i2++)
             for(int j1 = 0, j2 = jB; j1 < C.length; j1++, j2++)
                 P[i2][j2] = C[i1][j1];
-    }  
+    }
+    
     public int tamano(int n, int m){
         int B []={2,4,8,16,32,64};
         int result;
