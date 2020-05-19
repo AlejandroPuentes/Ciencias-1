@@ -18,7 +18,9 @@ public class Strassen {
 
     public static void main(String []args ){
         InterStrassen Stra = new InterStrassen();
-        Stra.show();        
+        Stra.show();
+        Operaciones ope = new Operaciones();
+        System.out.println(ope.contador());
     }
     
     

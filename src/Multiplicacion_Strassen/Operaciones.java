@@ -10,15 +10,19 @@ package Multiplicacion_Strassen;
  * @author User
  */
 public class Operaciones {
-    
+    int contador ;
     public int[][] multiply(int[][] A, int[][] B){        
         int n = A.length;
         int[][] R = new int[n][n];
+        contador=0;
         /* caso base*/
-        if (n == 1)
+        if (n == 1){
             R[0][0] = A[0][0] * B[0][0];
+            contador=contador+8;
+        }    
         else
         {
+                contador=40;
             int[][] A11 = new int[n/2][n/2];
             int[][] A12 = new int[n/2][n/2];
             int[][] A21 = new int[n/2][n/2];
@@ -29,6 +33,7 @@ public class Operaciones {
             int[][] B22 = new int[n/2][n/2];
  
             /*Dividiendo la matriz A en 4 mitades */
+            contador=contador+8;
             divide(A, A11, 0 , 0);
             divide(A, A12, 0 , n/2);
             divide(A, A21, n/2, 0);
@@ -48,7 +53,7 @@ public class Operaciones {
               M6 = (A21 - A11) (B11 + B12)
               M7 = (A12 - A22) (B21 + B22)
             **/
- 
+            contador=contador+26;
             int [][] M1 = multiply(suma(A11, A22), suma(B11, B22));
             int [][] M2 = multiply(suma(A21, A22), B11);
             int [][] M3 = multiply(A11, resta(B12, B22));
@@ -63,6 +68,7 @@ public class Operaciones {
               C21 = M2 + M4
               C22 = M1 - M2 + M3 + M6
             **/
+            contador=contador+12;
             int [][] C11 = suma(resta(suma(M1, M4), M5), M7);
             int [][] C12 = suma(M3, M5);
             int [][] C21 = suma(M2, M4);
@@ -73,6 +79,7 @@ public class Operaciones {
             reune(C12, R, 0 , n/2);
             reune(C21, R, n/2, 0);
             reune(C22, R, n/2, n/2);
+            contador=contador+4;
         }
             
         return R;
@@ -127,6 +134,9 @@ public class Operaciones {
         
         result=m+n;       
         return result;
+    }
+    public int contador (){
+        return contador;
     }
     
     
